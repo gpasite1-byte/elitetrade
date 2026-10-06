@@ -452,6 +452,22 @@ h1, h2, h3, h4, h5, h6 {
   image-rendering: auto;
 }
 
+/* Sombra transparente em degradê azul corporativo no lado esquerdo */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 21, 39, 0.88) 0%,
+    rgba(11, 31, 58, 0.65) 24%,
+    rgba(17, 51, 102, 0.30) 38%,
+    rgba(17, 51, 102, 0.08) 48%,
+    transparent 56%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* Fluid Container with High-Priority Z-Index */
 .hero-fluid-container {
   width: 100%;
@@ -1697,6 +1713,16 @@ h1, h2, h3, h4, h5, h6 {
   .hero {
     min-height: auto;
     padding: 3.5rem 0 2.5rem;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 21, 39, 0.20) 0%,
+      rgba(11, 31, 58, 0.70) 30%,
+      rgba(7, 21, 39, 0.95) 60%,
+      rgba(7, 21, 39, 1) 100%
+    );
   }
 
   .hero-grid {
