@@ -45,6 +45,8 @@ ELITETRADE/
 ├── .gitignore                 # Arquivos e pastas ignorados pelo controle de versão
 ├── GRUPO-LOGO-ELITETRADE-1.png# Logotipo horizontal oficial
 ├── GRUPO-LOGO-ELITETRADE.png  # Logotipo corporativo institucional
+├── hero-cover.png             # Imagem de capa unificada e recortada em alta definição (Hero)
+├── hero-cover.jpg             # Imagem de capa original (arte de apresentação)
 ├── NNNNN.png                  # Ilustração multimodal global (avião, navio, caminhão)
 ├── ss.png                     # Imagem do consultor executivo
 ├── slide7.png                 # Banner de terminal de cargas pesadas
