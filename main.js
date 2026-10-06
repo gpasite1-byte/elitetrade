@@ -165,6 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'absorbents_boom': {
       title: 'Booms Absorventes de Óleo (BZ10-001-02)',
       category: 'Industrial Absorbents • Contenção Marítima e Terrestre',
+      pdf: './ficha-tecnica-absorventes-elite.pdf',
+      pdfName: 'Ficha_Tecnica_Booms_Absorventes_EliteTrade.pdf',
       specs: [
         { label: 'Código', val: 'BZ10-001-02' },
         { label: 'Dimensões', val: '4 Metros x 125 Milímetros' },
@@ -178,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'absorbents_pillow': {
       title: 'Almofadas Absorventes (FIL-001-01)',
       category: 'Industrial Absorbents • Filtragem e Absorção Pontual',
+      pdf: './ficha-tecnica-absorventes-elite.pdf',
+      pdfName: 'Ficha_Tecnica_Almofadas_Absorventes_EliteTrade.pdf',
       specs: [
         { label: 'Código', val: 'FIL-001-01' },
         { label: 'Dimensões', val: '400mm x 400mm' },
@@ -190,6 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'absorbents_mat': {
       title: 'Mantas Absorventes de Óleo (OIL-MAT-001)',
       category: 'Industrial Absorbents • Limpeza e Manutenção Rápida',
+      pdf: './ficha-tecnica-absorventes-elite.pdf',
+      pdfName: 'Ficha_Tecnica_Mantas_Absorventes_EliteTrade.pdf',
       specs: [
         { label: 'Código', val: 'OIL-MAT-001' },
         { label: 'Dimensões', val: '42cm x 51cm' },
@@ -202,6 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'arejador_universal': {
       title: 'Arejador de Torneira Universal (ATU-01)',
       category: 'Acessórios Hidrossanitários • Redução do Consumo de Água',
+      pdf: './ficha-tecnica-arejador-universal.pdf',
+      pdfName: 'Ficha_Tecnica_Arejador_Universal_EliteTrade.pdf',
       specs: [
         { label: 'Modelo', val: 'ATU-01 / Código ATU-001' },
         { label: 'Lote Padrão', val: '200 Unidades' },
@@ -214,6 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'chuveiro_smart': {
       title: 'Chuveiro Smart com Esferas Minerais (SHM-01)',
       category: 'Acessórios Hidrossanitários de Alta Eficiência',
+      pdf: './ficha-tecnica-chuveiro-smart.pdf',
+      pdfName: 'Ficha_Tecnica_Chuveiro_Smart_EliteTrade.pdf',
       specs: [
         { label: 'Modelo', val: 'SHM-01' },
         { label: 'Lote Padrão', val: '100 Unidades' },
@@ -259,9 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
       html += `
           </tbody>
         </table>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem;">
+          <a href="${p.pdf}" download="${p.pdfName}" class="btn btn-pdf" style="flex: 1; justify-content: center;">
+            <i class="fas fa-file-pdf"></i> Baixar PDF Oficial
+          </a>
           <a href="https://wa.me/244936954060?text=${encodeURIComponent('Olá! Gostaria de solicitar cotação formal para o produto: ' + p.title)}" 
-             target="_blank" class="btn btn-primary" style="flex: 1;">
+             target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center;">
             <i class="fab fa-whatsapp"></i> Cotação via WhatsApp
           </a>
           <button onclick="document.getElementById('productModal').classList.remove('active')" 
@@ -291,6 +304,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Contact Form Processing & Feedback
   const contactForm = document.getElementById('corporateContactForm');
   const toastMsg = document.getElementById('toastMsg');
+  const successModal = document.getElementById('contactSuccessModal');
+  const btnModalWhatsApp = document.getElementById('btnModalWhatsApp');
+  const btnCloseSuccessModal = document.getElementById('btnCloseSuccessModal');
+
+  if (btnCloseSuccessModal && successModal) {
+    btnCloseSuccessModal.addEventListener('click', () => {
+      successModal.classList.remove('active');
+    });
+  }
+
+  if (successModal) {
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.remove('active');
+      }
+    });
+  }
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -316,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
       }
 
-      // Format WhatsApp query option as direct fallback
+      // Format WhatsApp query text
       const waDirectText = encodeURIComponent(
         `Olá EliteTrade Solutions!\nNova solicitação de proposta:\n` +
         `• Nome: ${name}\n` +
@@ -327,13 +357,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `• Mensagem: ${message}`
       );
 
-      // Offer opening WhatsApp immediately or confirming receipt
-      const openWhatsApp = confirm(
-        'Mensagem registada com sucesso!\n\nDeseja também abrir uma conversa imediata no WhatsApp com o nosso Diretor Comercial Ilídio Pedro?'
-      );
+      // Open elegant success modal with WhatsApp option
+      if (btnModalWhatsApp) {
+        btnModalWhatsApp.href = `https://wa.me/244936954060?text=${waDirectText}`;
+      }
 
-      if (openWhatsApp) {
-        window.open(`https://wa.me/244936954060?text=${waDirectText}`, '_blank');
+      if (successModal) {
+        successModal.classList.add('active');
       }
 
       contactForm.reset();
