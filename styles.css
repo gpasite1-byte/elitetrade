@@ -431,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 .hero {
   position: relative;
-  background-color: #071527;
+  background-color: #f4f6f8;
   color: var(--white);
   padding: 4.5rem 0 3.5rem;
   overflow: hidden;
@@ -440,30 +440,16 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-/* Full-bleed cover image across the entire section */
+/* Full-bleed Ultra HD cover image across the entire section */
 .hero-bg-cover {
   position: absolute;
   inset: 0;
-  background: url('./hero-cover.jpg?v=2.0') right center / cover no-repeat;
+  background: url('./hero-cover.jpg?v=3.0') right center / cover no-repeat;
   opacity: 1;
   pointer-events: none;
   z-index: 1;
-}
-
-/* Cinematic directional gradient overlay for flawless legibility */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(7, 21, 39, 0.96) 0%,
-    rgba(7, 21, 39, 0.90) 36%,
-    rgba(7, 21, 39, 0.50) 58%,
-    rgba(7, 21, 39, 0.10) 80%,
-    rgba(7, 21, 39, 0) 100%
-  );
-  pointer-events: none;
-  z-index: 2;
+  filter: contrast(1.05) saturate(1.1) brightness(1.02);
+  image-rendering: auto;
 }
 
 /* Fluid Container with High-Priority Z-Index */
@@ -489,14 +475,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-content {
   order: 1;
-  max-width: 600px;
-  background: rgba(11, 31, 58, 0.82);
+  max-width: 580px;
+  background: rgba(7, 21, 39, 0.92);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-xl);
   padding: 3rem 2.5rem;
-  box-shadow: 0 25px 65px -10px rgba(0, 0, 0, 0.65), 0 0 30px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 25px 65px -10px rgba(0, 0, 0, 0.55), 0 0 35px rgba(11, 31, 58, 0.3);
 }
 
 .hero-title {
@@ -1711,15 +1697,6 @@ h1, h2, h3, h4, h5, h6 {
   .hero {
     min-height: auto;
     padding: 3.5rem 0 2.5rem;
-  }
-  
-  .hero-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(7, 21, 39, 0.5) 0%,
-      rgba(7, 21, 39, 0.88) 35%,
-      rgba(7, 21, 39, 0.98) 100%
-    );
   }
 
   .hero-grid {
